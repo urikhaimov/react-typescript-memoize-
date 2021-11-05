@@ -8,7 +8,7 @@ const Countries: React.FC<{}> = () => {
 
   return (
     <>
-      <div className="card">
+      <div className="country-container ">
         {service.status === 'loading' && (
           <div className="loader-container">
             <Loader />

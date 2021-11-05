@@ -34,11 +34,8 @@ h1 {
   font-size: 36px;
   font-weight: bold;
 }
-.slogan {
-  max-width: 320px;
-  margin: 10px auto 0;
-}
-.card {
+
+.country-container {
   background-color: #fff;
   padding: 20px 30px;
   margin: 30px;
@@ -67,6 +64,7 @@ h1 {
   padding: 20px 30px 10px;
   border-radius: 5px;
   width: 300px;
+  margin: 20px;
  
 }
 .country h2 {
@@ -78,6 +76,10 @@ h1 {
  width: 50px;
  cursor: pointer;
 }
+
+#popup-root img {
+  width: 185px;
+ }
 
 .loader-container,
 .loader-container:before {
