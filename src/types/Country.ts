@@ -1,5 +1,11 @@
 export interface Country {
-  name: Object;
-  flag: Object;
+  name: {
+    common: string,
+    official: string
+  };
+  flags: {
+    png: string,
+    svg: string
+  };
  
 }

@@ -1,13 +1,122 @@
+html,
+body {
+  background-color: #dedce5;
+}
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
 body {
   margin: 0;
+  padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+body,
+input {
+  color: #373438;
+}
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+}
+.header {
+  text-align: center;
+  background-color: #130c0e;
+  color: white;
+  padding: 10px 10px 40px;
+}
+h1 {
+  font-size: 36px;
+  font-weight: bold;
+}
+.slogan {
+  max-width: 320px;
+  margin: 10px auto 0;
+}
+.card {
+  background-color: #fff;
+  padding: 20px 30px;
+  margin: 30px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  position: relative;
+  min-height: 100px;
+}
+.country-item {
+  padding: 10px 30px;
+  margin: 0 -30px;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 300;
+}
+.country-item:hover {
+  background-color: #6590b9;
+  color: #fff;
+}
+.country-modal-container,
+.country-modal-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.country {
+  background-color: #fff;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  z-index: 300;
+  padding: 20px 30px 10px;
+  border-radius: 5px;
+  width: 300px;
+ 
+}
+.country h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+.country img {
+ width: 50px;
+}
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.loader-container,
+.loader-container:before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loader-container:before {
+  content: '';
+  background-color: #a7a3a2;
+  opacity: 0.3;
+}
+.loader {
+  animation: loader-spin infinite 1s linear;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: 5px solid #bcc8dc;
+  border-top-color: #1f8dcc;
+}
+
+@keyframes loader-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

@@ -1,11 +1,11 @@
 import React from 'react';
 import useCountriesService from '../services/useCountriesService';
 import Loader from './Loader';
- import Country from './Country';
+import Country from './Country';
 
 const Countries: React.FC<{}> = () => {
   const service = useCountriesService();
-  
+
   return (
     <>
       <div className="card">
@@ -14,11 +14,11 @@ const Countries: React.FC<{}> = () => {
             <Loader />
           </div>
         )}
-      {service.status === 'loaded' &&
-      service.payload.results.map((country, i) => (
-           <Country key={`country-${i}`} name="urik" flag="asf"/>
+        {service.status === 'loaded' &&
+          service.payload.results.map((country, i) => (
+            <Country key={`country-${i}`} name={country.name.official} flag={country.flags.svg} />
           ))}
-       
+
       </div>
       {service.status === 'error' && (
         <div>Error, the backend moved to the dark side.</div>

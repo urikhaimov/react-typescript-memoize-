@@ -14,9 +14,11 @@ const useCountriesService = () => {
   useEffect(() => {
     fetch('https://restcountries.com/v3.1/all')
       .then(response => response.json())
-      .then(response => setResult({ status: 'loaded', payload:{
-        results:response
-      }  }))
+      .then(response => setResult({
+        status: 'loaded', payload: {
+          results: response
+        }
+      }))
       .catch(error => setResult({ status: 'error', error }));
   }, []);
 
