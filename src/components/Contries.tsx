@@ -1,20 +1,32 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import useCountriesService from '../services/useCountriesService';
 import Loader from './Loader';
 import CountryCard from './CountryCard';
 import { useLocalStorage } from 'usehooks-ts'
 import { Country } from '../types/Country';
+import _ from 'lodash';
+
 const Countries: React.FC<{}> = () => {
   const service = useCountriesService();
-  var arr = new Array<Country>();
-  const [countriesFromStorage, setCountriesFromStorage] = useLocalStorage('countries', arr)
+  const [countriesFromStorage, setCountriesFromStorage] = useLocalStorage('countries', new Array<Country>())
   // useEffect(()=>{
-  
+
   // },[countriesFromStorage]) 
-  
-  const addCountryToStorage = (country: Country) =>{
-    setCountriesFromStorage( [...countriesFromStorage, country])
-  //  console.log(countriesFromStorage)
+
+
+  const isCountryExistsInStorage = (country: Country) =>
+    countriesFromStorage.some(({ idd }) =>
+      _.isEqual(idd, country.idd))
+
+
+
+
+  const addCountryToStorage = (country: Country) => {
+    if (!isCountryExistsInStorage(country)) {
+      setCountriesFromStorage([country, ...countriesFromStorage])
+    }
+
+    //  console.log(countriesFromStorage)
   }
 
   return (
@@ -27,15 +39,15 @@ const Countries: React.FC<{}> = () => {
         )}
         {service.status === 'loaded' &&
           service.payload.results.map((country, i) => (
-            <CountryCard 
-                  key ={`countryCard-${i}`}
-                  country={country}
-                  clickHandler={addCountryToStorage} />
+            <CountryCard
+              key={`countryCard-${i}`}
+              country={country}
+              clickHandler={addCountryToStorage} />
           ))}
 
       </div>
       {service.status === 'error' && (
-        <div>Error, the backend moved to the dark side.</div>
+        <div>Error!</div>
       )}
     </>
   );
