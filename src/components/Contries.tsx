@@ -1,10 +1,19 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import useCountriesService from '../services/useCountriesService';
 import Loader from './Loader';
-import Country from './Country';
+import CountryCard from './CountryCard';
+import { useLocalStorage } from 'usehooks-ts'
 
 const Countries: React.FC<{}> = () => {
   const service = useCountriesService();
+  const [countriesFromStorage, setCountriesFromStorage] = useLocalStorage('countries',[])
+  // useEffect(()=>{
+  
+  // },[countriesFromStorage]) 
+  
+  const addCountryToStorage = (e: any) =>{
+    console.log(e.target)
+  }
 
   return (
     <>
@@ -16,7 +25,9 @@ const Countries: React.FC<{}> = () => {
         )}
         {service.status === 'loaded' &&
           service.payload.results.map((country, i) => (
-            <Country key={`country-${i}`} name={country.name.official} flag={country.flags.svg} />
+            <CountryCard 
+                  country={country}
+                  clickHandler={addCountryToStorage} />
           ))}
 
       </div>

@@ -7,5 +7,9 @@ export interface Country {
     png: string,
     svg: string
   };
+  idd: {
+    root: string,
+    suffixes: Array<Number>
+  };
  
 }
