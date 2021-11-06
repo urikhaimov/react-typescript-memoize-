@@ -14,7 +14,7 @@ const CountryCard: React.FC<Props> = ({ country,clickHandler}) => {
     <div className="country">
       <h2>{name}- {country.idd.root} -  {country.idd.suffixes}</h2>
       <Popup trigger={<img src={flag} alt={name} />} position="right center">
-        <div><img src={flag} alt={name} onClick={clickHandler} /></div>
+        <div><img src={flag} data-country ={country} alt={name} onClick={clickHandler.bind(null, country)} /></div>
       </Popup>
 
     </div>
