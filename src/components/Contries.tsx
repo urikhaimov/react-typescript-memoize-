@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import useCountriesService from '../services/useCountriesService';
 import Loader from './Loader';
 import CountryCard from './CountryCard';
@@ -9,24 +9,35 @@ import _ from 'lodash';
 const Countries: React.FC<{}> = () => {
   const service = useCountriesService();
   const [countriesFromStorage, setCountriesFromStorage] = useLocalStorage('countries', new Array<Country>())
-  // useEffect(()=>{
-
-  // },[countriesFromStorage]) 
+  const [countries, setCountries] = useState(new Array<Country>())
 
 
-  const isCountryExistsInStorage = (country: Country) =>
-    countriesFromStorage.some(({ idd }) =>
-      _.isEqual(idd, country.idd))
-
-
-
-
-  const addCountryToStorage = (country: Country) => {
-    if (!isCountryExistsInStorage(country)) {
-      setCountriesFromStorage([country, ...countriesFromStorage])
+  useEffect (() =>{
+    if(service.status === 'loaded') {
+      setCountries(service.payload.results)
     }
+  },[service])
 
-    //  console.log(countriesFromStorage)
+
+  const removeItemWithSlice = (index: number) =>
+    [...countries.slice(0, index), ...countries.slice(index + 1)]
+  
+  
+    const isCountryExistsInStorage = (current: Object) =>
+    countriesFromStorage.some(({ idd }) =>
+      _.isEqual(idd, current))
+
+
+
+
+  const addCountryToStorage = (index: number, country: Country) => {
+   if (!isCountryExistsInStorage(country.idd)) {
+    setCountriesFromStorage([country, ...countriesFromStorage])
+    setCountries([...countriesFromStorage,...removeItemWithSlice(index)] )
+  
+   }
+    
+   // setIndex(index)
   }
 
   return (
@@ -38,9 +49,10 @@ const Countries: React.FC<{}> = () => {
           </div>
         )}
         {service.status === 'loaded' &&
-          service.payload.results.map((country, i) => (
+          countries.map((country, i) => (
             <CountryCard
               key={`countryCard-${i}`}
+              index = {i}
               country={country}
               clickHandler={addCountryToStorage} />
           ))}
