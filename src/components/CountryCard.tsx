@@ -2,7 +2,7 @@ import React from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { Country } from '../types/Country';
-
+import defaultFlagIcon from '../resources/images/default.svg'
 export interface Props {
   country: Country
   clickHandler(c: Country): void;
@@ -10,8 +10,8 @@ export interface Props {
 
 const CountryCard: React.FC<Props> = ({country, clickHandler }) => {
   const name = country.name.official;
-  const flag = country.flags.svg;
-  return (
+  const flag = country.flags.svg || defaultFlagIcon;
+return (
     <div className="country">
       <h2>{name}</h2>
       <Popup trigger={<img src={flag} alt={name} />} position="right center">

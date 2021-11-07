@@ -15,7 +15,7 @@ const Countries: React.FC<{}> = () => {
 
   useEffect(() => {
     if (service.status === 'loaded') {
-      const updatedCountries =  getUniqueListBy([...countriesFromStorage, ...service.payload.results])
+      const updatedCountries = getUniqueListBy([...countriesFromStorage, ...service.payload.results])
       setCountries(updatedCountries);
       setAllCountries(updatedCountries)
     }
@@ -36,9 +36,8 @@ const Countries: React.FC<{}> = () => {
   }
 
   const filterCountries = (e: any) => {
-    const value = e.target.value
     setCountries(allCountries.filter((c: Country) =>
-      c.name.official.toLowerCase().includes(value.toLowerCase())
+      c.name.official.toLowerCase().includes(e.target.value.toLowerCase())
     ))
   }
 
@@ -46,9 +45,7 @@ const Countries: React.FC<{}> = () => {
     <>
       <div className="country-container ">
         <SearchBar
-          changeHandler={filterCountries}
-
-        />
+          changeHandler={filterCountries} />
         {service.status === 'loading' && (
           <div className="loader-container">
             <Loader />
