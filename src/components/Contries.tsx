@@ -5,16 +5,19 @@ import CountryCard from './CountryCard';
 import { useLocalStorage } from 'usehooks-ts'
 import { Country } from '../types/Country';
 import _ from 'lodash';
+import SearchBar from './SearchBar';
 
 const Countries: React.FC<{}> = () => {
   const service = useCountriesService();
   const [countriesFromStorage, setCountriesFromStorage] = useLocalStorage('countries', new Array<Country>())
   const [countries, setCountries] = useState(new Array<Country>())
-
+  const [allCountries, setAllCountries] = useState(new Array<Country>())
 
   useEffect(() => {
     if (service.status === 'loaded') {
-      setCountries(getUniqueListBy([...countriesFromStorage, ...service.payload.results]))
+      const updatedCountries =  getUniqueListBy([...countriesFromStorage, ...service.payload.results])
+      setCountries(updatedCountries);
+      setAllCountries(updatedCountries)
     }
   }, [service, countriesFromStorage])
 
@@ -32,9 +35,20 @@ const Countries: React.FC<{}> = () => {
 
   }
 
+  const filterCountries = (e: any) => {
+    const value = e.target.value
+    setCountries(allCountries.filter((c: Country) =>
+      c.name.official.toLowerCase().includes(value.toLowerCase())
+    ))
+  }
+
   return (
     <>
       <div className="country-container ">
+        <SearchBar
+          changeHandler={filterCountries}
+
+        />
         {service.status === 'loading' && (
           <div className="loader-container">
             <Loader />
