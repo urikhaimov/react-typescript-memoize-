@@ -6,7 +6,7 @@ import { Country } from '../types/Country';
 export interface Props {
   index: Number
   country: Country
-  clickHandler(i: Number, c: Country): void;
+  clickHandler(c: Country): void;
 }
 
 const CountryCard: React.FC<Props> = ({index, country, clickHandler }) => {
@@ -17,7 +17,7 @@ const CountryCard: React.FC<Props> = ({index, country, clickHandler }) => {
       <h2>{name}- {index}</h2>
       <Popup trigger={<img src={flag} alt={name} />} position="right center">
         <div>
-          <img src={flag} alt={name} onClick={clickHandler.bind(null,index, country)} />
+          <img src={flag} alt={name} onClick={clickHandler.bind(null,country)} />
         </div>
       </Popup>
 

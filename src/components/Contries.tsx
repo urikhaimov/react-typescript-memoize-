@@ -14,30 +14,27 @@ const Countries: React.FC<{}> = () => {
 
   useEffect (() =>{
     if(service.status === 'loaded') {
-      setCountries(service.payload.results)
+      setCountries(getUniqueListBy([...countriesFromStorage,...service.payload.results]))
     }
-  },[service])
+  },[service, countriesFromStorage])
 
 
-  const removeItemWithSlice = (index: number) =>
-    [...countries.slice(0, index), ...countries.slice(index + 1)]
   
+  const getUniqueListBy = (arr: Array<Country>) =>
+      [...new Map(arr.map(item => [item.name.official, item])).values()]
   
-    const isCountryExistsInStorage = (current: Object) =>
+  const isCountryExistsInStorage = (current: Object) =>
     countriesFromStorage.some(({ idd }) =>
       _.isEqual(idd, current))
 
 
 
 
-  const addCountryToStorage = (index: number, country: Country) => {
+  const addCountryToStorage = (country: Country) => {
    if (!isCountryExistsInStorage(country.idd)) {
     setCountriesFromStorage([country, ...countriesFromStorage])
-    setCountries([...countriesFromStorage,...removeItemWithSlice(index)] )
-  
    }
     
-   // setIndex(index)
   }
 
   return (
