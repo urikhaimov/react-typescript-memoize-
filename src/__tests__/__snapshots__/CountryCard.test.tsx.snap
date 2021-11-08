@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render App 1`] = `
+<div
+  className="country"
+>
+  <h2>
+    aaaa
+  </h2>
+  <img
+    alt="aaaa"
+    aria-describedby="popup-1"
+    onClick={[Function]}
+    src="svg"
+  />
+</div>
+`;
+
+exports[`render Country Card`] = `
+<div
+  className="country"
+>
+  <h2>
+    aaaa
+  </h2>
+  <img
+    alt="aaaa"
+    aria-describedby="popup-1"
+    onClick={[Function]}
+    src="svg"
+  />
+</div>
+`;
