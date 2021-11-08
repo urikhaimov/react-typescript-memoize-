@@ -1,6 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`app snapshot`] = `
  <div className="App">
     <Countries></Countries>
     </div>
 
+`;
+
+exports[`render App 1`] = `
+<div
+  className="App"
+>
+  <div
+    className="country-container "
+  >
+    <div
+      className="search-bar"
+    >
+      <form>
+        <input
+          id="searchbartext"
+          onChange={[Function]}
+        />
+      </form>
+    </div>
+    <div
+      className="loader-container"
+    >
+      <div
+        className="loader"
+      />
+    </div>
+  </div>
+</div>
 `;
