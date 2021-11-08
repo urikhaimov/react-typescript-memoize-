@@ -1,0 +1,6 @@
+exports[`app snapshot`] = `
+ <div className="App">
+    <Countries></Countries>
+    </div>
+
+`;
