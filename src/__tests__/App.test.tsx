@@ -5,11 +5,11 @@ import App from '../App';
 
 test('render App', () => {
   const component = renderer.create(
-    <App/>,
+    <App />,
 
   );
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 
- 
+
 });

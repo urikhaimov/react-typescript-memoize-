@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`render App 1`] = `
+exports[`render Sender Search Bar 1`] = `
 <div
   className="search-bar"
 >

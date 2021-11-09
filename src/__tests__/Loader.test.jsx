@@ -4,12 +4,12 @@ import Loader from '../components/Loader';
 
 
 test('render Loader', () => {
-  const component = renderer.create(
-    <Loader/>,
+    const component = renderer.create(
+        <Loader />,
 
-  );
-  let tree = component.toJSON();
-  expect(tree).toMatchSnapshot();
+    );
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
 
- 
+
 });
