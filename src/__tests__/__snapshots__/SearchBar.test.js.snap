@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render Search Bar 1`] = `
+<div
+  className="search-bar"
+>
+  <label>
+    Search
+    <input
+      id="searchbartext"
+      onChange={[MockFunction]}
+    />
+  </label>
+</div>
+`;

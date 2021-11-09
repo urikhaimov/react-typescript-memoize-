@@ -12,9 +12,9 @@ const SearchBar: React.FC<Props> = ({ changeHandler }) => {
     return (
 
         <div className="search-bar">
-            <form >
+           <label>Search
                 <input id="searchbartext" onChange={changeHandler} />
-            </form>
+            </label>
         </div>
     );
 };

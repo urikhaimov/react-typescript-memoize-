@@ -43,15 +43,15 @@ test('render Country Card', () => {
 });
 
 it('Country Card after click', () => {
-  const { queryAllByRole, getAllByRole} = render(
+  const { queryAllByRole, getAllByRole } = render(
     <CountryCard key={`countryCard-${0}`}
       country={country}
       clickHandler={addCountryToStorage} />,
   );
-  let img =queryAllByRole('img')
-  expect(img).toBeTruthy();
-  expect(img.length).toEqual(1)
-  fireEvent.click(getAllByRole('img')[0])
-  img =queryAllByRole('img')
-  expect(img.length).toEqual(2)
+  let img = queryAllByRole('img')
+  expect(img[0]).toBeTruthy();
+  expect(img.length).toEqual(1);
+  fireEvent.click(getAllByRole('img')[0]);
+  img = queryAllByRole('img');
+  expect(img.length).toEqual(2);
 });

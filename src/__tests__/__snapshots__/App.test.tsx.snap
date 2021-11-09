@@ -1,12 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`app snapshot`] = `
- <div className="App">
-    <Countries></Countries>
-    </div>
-
-`;
-
 exports[`render App 1`] = `
 <div
   className="App"
@@ -17,12 +10,13 @@ exports[`render App 1`] = `
     <div
       className="search-bar"
     >
-      <form>
+      <label>
+        Search
         <input
           id="searchbartext"
           onChange={[Function]}
         />
-      </form>
+      </label>
     </div>
     <div
       className="loader-container"
