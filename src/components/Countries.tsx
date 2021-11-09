@@ -15,13 +15,13 @@ const Countries: React.FC<{}> = () => {
 
   useEffect(() => {
     if (service.status === 'loaded') {
-      const updatedCountries = getUniqueListBy([...countriesFromStorage, ...service.payload.results])
+      const updatedCountries = getUniqueListByName([...countriesFromStorage, ...service.payload.results])
       setCountries(updatedCountries);
       setAllCountries(updatedCountries)
     }
   }, [service, countriesFromStorage])
 
-  const getUniqueListBy = (arr: Array<Country>) =>
+  const getUniqueListByName = (arr: Array<Country>) =>
     [...new Map(arr.map(item => [item.name.official, item])).values()]
 
   const isCountryExistsInStorage = (current: Object) =>

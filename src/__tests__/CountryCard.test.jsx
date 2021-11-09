@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { cleanup, fireEvent, render } from '@testing-library/react';
 import CountryCard from '../components/CountryCard';
-import { isEmptyBindingPattern } from 'typescript';
+
 
 const addCountryToStorage = jest.fn()
 const country = {
