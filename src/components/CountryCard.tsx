@@ -14,9 +14,9 @@ const CountryCard: React.FC<Props> = ({country, clickHandler }) => {
 return (
     <div className="country">
       <h2>{name}</h2>
-      <Popup trigger={<img src={flag} alt={name} />} position="right center">
+      <Popup trigger={<img id={`small-image-${name}`} src={flag} alt={name} />} position="right center">
         <div>
-          <img src={flag} alt={name} onClick={clickHandler.bind(null,country)} />
+          <img  id={`big-image-${name}`} src={flag} alt={name} onClick={clickHandler.bind(null,country)} />
         </div>
       </Popup>
 

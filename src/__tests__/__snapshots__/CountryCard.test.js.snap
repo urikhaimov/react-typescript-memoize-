@@ -10,6 +10,7 @@ exports[`render Country Card 1`] = `
   <img
     alt="WonderLand"
     aria-describedby="popup-1"
+    id="small-image-WonderLand"
     onClick={[Function]}
     src="svg"
   />
